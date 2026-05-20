@@ -1,0 +1,606 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&display=swap");
+
+/* =========================
+   1. RESET / BASE
+========================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
+  font-family: "Cinzel", serif;
+
+  background-image: url("/src/assets/background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* =========================
+   2. MAIN APP LAYOUT
+========================= */
+
+#app {
+  width: 100vw;
+  height: 100vh;
+
+  padding: 2vh 2vw;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game-container {
+  width: 92vw;
+  height: 92vh;
+
+  padding: 2vh 2.5vw;
+
+  border-radius: 2vw;
+
+  background: rgba(73, 49, 31, 0.35);
+  backdrop-filter: blur(0.2vw);
+
+  box-shadow: 0 2vh 8vh rgba(0, 0, 0, 0.45);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* =========================
+   3. SCREENS
+========================= */
+
+.game-screen,
+.start-screen,
+.info-screen {
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.game-screen {
+  justify-content: center;
+  gap: 2vh;
+}
+
+.start-screen,
+.info-screen {
+  justify-content: center;
+  gap: 3vh;
+}
+
+/* =========================
+   4. TYPOGRAPHY
+========================= */
+
+h1 {
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1;
+
+  color: #f4e8d2;
+  text-align: center;
+
+  text-shadow:
+    0 0.5vh 1vh rgba(0, 0, 0, 0.55),
+    0 0 2vh rgba(0, 0, 0, 0.25);
+}
+
+.intro-text,
+.info-screen {
+  color: #f5ead6;
+  text-align: center;
+
+  font-size: clamp(1rem, 1.4vw, 1.4rem);
+  line-height: 1.6;
+}
+
+.info-screen {
+  max-width: 70vw;
+}
+
+.info-screen ul {
+  text-align: left;
+}
+
+/* =========================
+   5. START SCREEN
+========================= */
+
+.game-description {
+  width: min(80vw, 700px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.2vh;
+
+  text-align: center;
+
+  color: #f5e6c8;
+
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  line-height: 1.5;
+
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.win-condition {
+  margin-top: 1vh;
+
+  color: #ffe7a8;
+  font-weight: 700;
+}
+
+.player-input {
+  width: min(30vw, 90%);
+
+  padding: 1.2vh 2vw;
+
+  border: none;
+  border-radius: 999px;
+
+  font-size: clamp(0.95rem, 1.1vw, 1.2rem);
+
+  outline: none;
+}
+
+/* =========================
+   6. BUTTONS
+========================= */
+
+.restart-button,
+.start-button,
+.settings-actions button,
+.modal-actions button {
+  padding: 0.8vh 1.8vw;
+
+  border: none;
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.92);
+  color: #2a1d12;
+
+  font-size: clamp(0.75rem, 1vw, 1rem);
+  font-weight: 700;
+}
+
+.restart-button:hover,
+.start-button:hover,
+.settings-actions button:hover,
+.modal-actions button:hover {
+  background: #ffffff;
+}
+
+/* =========================
+   7. GAME INFO
+========================= */
+
+.game-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 2vw;
+
+  color: #f5ead6;
+
+  font-size: clamp(0.9rem, 1.5vw, 1.5rem);
+}
+
+/* =========================
+   8. BOARD
+========================= */
+
+.board {
+  width: 100%;
+  height: 68vh;
+
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+  grid-template-columns: repeat(6, auto);
+
+  gap: min(2vh, 1.4vw);
+}
+
+/* =========================
+   9. CARDS / FLIP ANIMATION
+========================= */
+
+.card {
+  width: min(8.7vw, 14.2vh);
+  aspect-ratio: 154 / 218;
+
+  border: none;
+  background: transparent;
+
+  border-radius: 0.5rem;
+
+  perspective: 1000px;
+
+  transition: transform 0.2s ease;
+
+  margin: 0 0.5rem;
+
+}
+
+.card:hover {
+  transform: scale(1.03);
+}
+
+.card-inner {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: inherit;
+
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  border-radius: inherit;
+  overflow: hidden;
+
+  backface-visibility: hidden;
+
+  box-shadow:
+    0 0.8vh 1.8vh rgba(0, 0, 0, 0.4),
+    0 0 0 0.12vw rgba(255, 255, 255, 0.08);
+}
+
+.card-front {
+  transform: rotateY(180deg);
+}
+
+.card-front img,
+.card-back img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  display: block;
+
+  border-radius: inherit;
+
+  filter: brightness(0.92) blur(0.3px);
+  transition: filter 0.3s ease;
+}
+
+.card:hover img {
+  filter: brightness(1) blur(0);
+}
+
+.matched {
+  pointer-events: none;
+  opacity: 0.9;
+}
+/* =========================
+   10. FOOTER NAVIGATION
+========================= */
+
+.footer {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 1.4vw;
+
+  font-size: clamp(0.65rem, 0.9vw, 0.95rem);
+}
+
+.footer button {
+  border: none;
+  background: transparent;
+
+  color: #f5ead6;
+
+  font-weight: 700;
+
+  opacity: 0.85;
+}
+
+.footer button:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+/* =========================
+   11. RESULT MODAL
+========================= */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(1vw);
+}
+
+.result-modal {
+  width: min(40vw, 90vw);
+  max-height: 80vh;
+
+  padding: 4vh 3vw;
+
+  border-radius: 2vw;
+
+  background: #f5ead6;
+  color: #2a1d12;
+
+  box-shadow: 0 2vh 8vh rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.result-modal h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.attempts-list {
+  max-height: 22vh;
+  overflow-y: auto;
+
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.attempts-list li {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 1vh 0;
+
+  border-bottom: 0.1vh solid rgba(0, 0, 0, 0.15);
+}
+
+.modal-actions,
+.cookie-actions,
+.settings-actions {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+
+  gap: 1vw;
+}
+
+/* =========================
+   12. COOKIE BANNER
+========================= */
+
+.cookie-banner {
+  position: fixed;
+  left: 50%;
+  bottom: 3vh;
+  z-index: 99999;
+
+  transform: translateX(-50%);
+
+  width: min(55vw, 92vw);
+
+  padding: 3vh 3vw;
+
+  border-radius: 2vw;
+
+  background: #f7f7fb;
+  color: #111;
+
+  box-shadow: 0 2vh 8vh rgba(0, 0, 0, 0.45);
+}
+
+.cookie-banner h2 {
+  margin-bottom: 1.5vh;
+
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+}
+
+.cookie-banner p {
+  line-height: 1.5;
+}
+
+.cookie-actions {
+  margin-top: 2vh;
+}
+
+.cookie-actions button {
+  padding: 1.2vh 2vw;
+
+  border: none;
+  border-radius: 999px;
+
+  font-weight: 700;
+}
+
+.accept-cookies {
+  background: #6d4cff;
+  color: #ffffff;
+}
+
+.reject-cookies,
+.open-cookie-settings {
+  background: #ece7ff;
+  color: #4e34cc;
+}
+
+/* =========================
+   13. WIN SPARK EFFECT
+========================= */
+
+.spark-container {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.spark {
+  position: absolute;
+  top: -5vh;
+
+  width: 0.8vw;
+  height: 0.8vw;
+
+  min-width: 6px;
+  min-height: 6px;
+
+  border-radius: 50%;
+
+  background: #ffd66b;
+
+  box-shadow:
+    0 0 12px #ffd66b,
+    0 0 24px #fff2a8;
+
+  animation: sparkFall 2.2s ease-out forwards;
+}
+
+@keyframes sparkFall {
+  0% {
+    transform: translateY(0) scale(0.4);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(105vh) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   14. TABLET
+========================= */
+
+@media (max-width: 768px) {
+  #app {
+    padding: 1.5vh 2vw;
+  }
+
+  .game-container {
+    width: 96vw;
+    height: 96vh;
+
+    padding: 2vh 3vw;
+  }
+
+  h1 {
+    font-size: clamp(1.8rem, 8vw, 3rem);
+  }
+
+  .game-info {
+    flex-direction: column;
+
+    gap: 0.8vh;
+
+    font-size: clamp(0.8rem, 4vw, 1.2rem);
+  }
+
+  .board {
+    height: 64vh;
+
+    grid-template-columns: repeat(3, auto);
+  }
+
+  .card {
+    width: min(25vw, 10vh);
+    border-radius: 0.5rem;
+  }
+
+  .footer {
+    gap: 2vw;
+
+    font-size: clamp(0.55rem, 3vw, 0.85rem);
+  }
+
+  .player-input {
+    width: 80vw;
+  }
+
+  .result-modal,
+  .cookie-banner {
+    width: 92vw;
+  }
+
+  .modal-actions,
+  .cookie-actions,
+  .settings-actions {
+    flex-direction: column;
+  }
+}
+
+/* =========================
+   15. SMALL MOBILE
+========================= */
+
+@media (max-width: 420px) {
+  .game-container {
+    padding: 1.5vh 2.5vw;
+  }
+
+  .board {
+    height: 64vh;
+    gap: 1vh 3vw;
+  }
+
+  .card {
+    width: min(26vw, 10.8vh);
+    border-radius: 0.5rem;
+  }
+
+  .footer {
+    gap: 2vw;
+
+    font-size: 0.7rem;
+  }
+}
