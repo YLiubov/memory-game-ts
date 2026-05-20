@@ -210,11 +210,11 @@ class GameController {
       card.innerHTML = `
         <div class="card-inner">
           <div class="card-front">
-            <img src="${goal.image}" alt="${goal.title}">
+            <img src="${import.meta.env.BASE_URL}${goal.image}" alt="Front image">
           </div>
 
           <div class="card-back">
-            <img src="/src/assets/images/card-back.png" alt="card back">
+            <img src="${import.meta.env.BASE_URL}assets/images/card-back.png" alt="card back">
           </div>
         </div>
       `;

@@ -9,7 +9,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/1.png"
+      "image": "assets/images/1.png"
     },
     {
       "id": "2",
@@ -17,7 +17,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/2.png"
+      "image": "assets/images/2.png"
     },
     {
       "id": "3",
@@ -25,7 +25,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/3.png"
+      "image": "assets/images/3.png"
     },
     {
       "id": "4",
@@ -33,7 +33,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/4.png"
+      "image": "assets/images/4.png"
     },
     {
       "id": "5",
@@ -41,7 +41,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/5.png"
+      "image": "assets/images/5.png"
     },
     {
       "id": "6",
@@ -49,7 +49,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/6.png"
+      "image": "assets/images/6.png"
     },
     {
       "id": "7",
@@ -57,7 +57,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/7.png"
+      "image": "assets/images/7.png"
     },
     {
       "id": "8",
@@ -65,7 +65,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/8.png"
+      "image": "assets/images/8.png"
     },
     {
       "id": "9",
@@ -73,7 +73,7 @@
       "byline": "Memory game card",
       "color": "8b5cf6",
       "icon": "",
-      "image": "/src/assets/images/9.png"
+      "image": "assets/images/9.png"
     }
   ]
 }
