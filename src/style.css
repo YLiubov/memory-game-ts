@@ -20,7 +20,7 @@ body {
 body {
   font-family: "Cinzel", serif;
 
-  background-image: url("../assets/background.jpg");
+  background-image: url("../public/assets/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -55,7 +55,6 @@ button {
   border-radius: 2vw;
 
   background: rgba(73, 49, 31, 0.35);
-  backdrop-filter: blur(0.2vw);
 
   box-shadow: 0 2vh 8vh rgba(0, 0, 0, 0.45);
 
@@ -246,7 +245,7 @@ h1 {
 }
 
 .card:hover {
-  transform: scale(1.03);
+  transform: scale(1.01);
 }
 
 .card-inner {
@@ -296,12 +295,7 @@ h1 {
 
   border-radius: inherit;
 
-  filter: brightness(0.92) blur(0.3px);
-  transition: filter 0.3s ease;
-}
-
-.card:hover img {
-  filter: brightness(1) blur(0);
+  filter: brightness(0.92);
 }
 
 .matched {
@@ -354,7 +348,6 @@ h1 {
   align-items: center;
 
   background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(1vw);
 }
 
 .result-modal {
@@ -457,14 +450,14 @@ h1 {
 }
 
 .accept-cookies {
-  background: #ffd66b;
+  background: #c88f00;
   color: #ffffff;
 }
 
 .reject-cookies,
 .open-cookie-settings {
   background: #ece7ff;
-  color: #ffd66b;
+  color: #c88f00;
 }
 
 /* =========================
