@@ -20,7 +20,7 @@ body {
 body {
   font-family: "Cinzel", serif;
 
-  background-image: url("./assets/background.jpg");
+  background-image: url("../assets/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -457,14 +457,14 @@ h1 {
 }
 
 .accept-cookies {
-  background: #6d4cff;
+  background: #ffd66b;
   color: #ffffff;
 }
 
 .reject-cookies,
 .open-cookie-settings {
   background: #ece7ff;
-  color: #4e34cc;
+  color: #ffd66b;
 }
 
 /* =========================
